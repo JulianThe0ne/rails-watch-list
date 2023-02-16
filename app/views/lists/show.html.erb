@@ -1,4 +1,12 @@
 <%= @list.name %>
 <p>
-  <%= link_to '< Movies', movies_path, class: 'btn-light opacity-25 text-decoration-none' %>
+  <%= link_to "Go back to lists", lists_path, class: "btn-light text-decoration-none" %>
 </p>
+<div class="d-flex">
+  <p><%= link_to list_path(@list), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'card-action card-edit' do %>
+      <i class="fas fa-times"></i></p>
+  <% end %>
+</div>
+<% @list.bookmarks.each do |bookmark| %>
+  <%=   bookmark.movie.title%>
+<% end %>
