@@ -1,5 +1,13 @@
-<ul>
+<div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/3921000/pexels-photo-3921000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);">
+  <div class="container">
+    <h1>j-flex <strong>movie</strong> </h1>
+  </div>
+</div>
+<div class="cards w-75">
   <% @lists.each do |list| %>
-    <li> <%= list.name %> </li>
+    <div class="item card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>)">
+      <%= link_to list.name, list_path(list) %>
+    </div>
   <% end %>
-</ul>
+</div>
+<%= link_to "Create a new list", new_list_path, class: "btn btn-success" %>
